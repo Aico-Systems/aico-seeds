@@ -1,0 +1,70 @@
+[
+	{
+		"organizationId": null,
+		"name": "http_request",
+		"description": "Make HTTP requests to external APIs with automatic retry logic and error handling",
+		"category": "network",
+		"tags": ["http", "api", "fetch", "network"],
+		"runtime": "worker",
+		"version": "1.0.0",
+		"author": "system",
+		"permissions": ["network"],
+		"parameters": {
+			"url": {
+				"type": "string",
+				"description": "The URL to fetch",
+				"required": true
+			},
+			"method": {
+				"type": "string",
+				"description": "HTTP method",
+				"required": false,
+				"enum": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+				"default": "GET"
+			},
+			"headers": {
+				"type": "object",
+				"description": "HTTP headers",
+				"required": false
+			},
+			"body": {
+				"type": "string",
+				"description": "Request body as string (for POST/PUT/PATCH)",
+				"required": false
+			},
+			"body_data": {
+				"type": "object",
+				"description": "Request body as object (auto-stringified to JSON). Use instead of body for structured data with @variable interpolation.",
+				"required": false
+			}
+		},
+		"handlerCode": "export async function handler(context, parameters) {\n  const url = parameters.url;\n  const method = parameters.method || 'GET';\n  const headers = parameters.headers || {};\n  let body = parameters.body;\n\n  // Support body_data as object (auto-stringified)\n  if (!body && parameters.body_data) {\n    body = JSON.stringify(parameters.body_data);\n  }\n\n  console.log(`Making ${method} request to ${url}`);\n\n  try {\n    const options = {\n      method: method,\n      headers: headers\n    };\n\n    if (body && ['POST', 'PUT', 'PATCH'].includes(method)) {\n      options.body = body;\n    }\n\n    const response = await fetch(url, options);\n    const responseText = await response.text();\n\n    let responseData;\n    try {\n      responseData = JSON.parse(responseText);\n    } catch {\n      responseData = responseText;\n    }\n\n    return {\n      success: response.ok,\n      output: {\n        status: response.status,\n        statusText: response.statusText,\n        data: responseData,\n        headers: Object.fromEntries(response.headers.entries())\n      }\n    };\n  } catch (error) {\n    return {\n      success: false,\n      error: `HTTP request failed: ${error.message}`\n    };\n  }\n}",
+		"examples": [
+			{
+				"name": "GET request example",
+				"description": "Fetch data from JSONPlaceholder API",
+				"parameters": {
+					"url": "https://jsonplaceholder.typicode.com/posts/1",
+					"method": "GET"
+				}
+			}
+		],
+		"testCases": [
+			{
+				"name": "Test GET request",
+				"description": "Should successfully fetch data",
+				"parameters": {
+					"url": "https://jsonplaceholder.typicode.com/posts/1",
+					"method": "GET"
+				},
+				"expectedSuccess": true,
+				"timeout": 10000
+			}
+		],
+		"isBuiltIn": true,
+		"isPublic": true,
+		"metadata": {
+			"allowedDomains": ["*.typicode.com", "*.example.com"]
+		}
+	}
+]

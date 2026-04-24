@@ -1,0 +1,26 @@
+[
+	{
+		"organizationId": "_default",
+		"name": "delayed_callback",
+		"description": "Returns async=true immediately, then POSTs the result to the callbackUrl after a configurable delay. Useful for testing async tool patterns and webhook flows.",
+		"category": "utility",
+		"tags": ["test", "async", "callback", "webhook"],
+		"runtime": "worker",
+		"version": "1.0.0",
+		"parameters": {
+			"delay_ms": {
+				"type": "number",
+				"description": "Delay in milliseconds before firing the callback (default: 3000)",
+				"required": false
+			},
+			"result_data": {
+				"type": "object",
+				"description": "Data to include in the callback payload",
+				"required": false
+			}
+		},
+		"handlerCode": "export async function handler(context, parameters) {\n  const delay = parameters.delay_ms || 3000;\n  const callbackUrl = context.callbackUrl;\n  const resultData = parameters.result_data || { status: \"completed\", answer: 42 };\n\n  if (!callbackUrl) {\n    return { success: false, error: \"No callbackUrl provided in context\" };\n  }\n\n  console.log(`Async tool: will callback in ${delay}ms to ${callbackUrl}`);\n\n  // Fire-and-forget: delayed callback\n  setTimeout(async () => {\n    try {\n      const res = await fetch(callbackUrl, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(resultData),\n      });\n      console.log(`Callback sent: ${res.status}`);\n    } catch (err) {\n      console.error(`Callback failed: ${err.message}`);\n    }\n  }, delay);\n\n  return {\n    success: true,\n    output: {\n      async: true,\n      message: `Processing started. Callback in ${delay}ms.`,\n      callbackUrl: callbackUrl\n    }\n  };\n}",
+		"isEnabled": true,
+		"metadata": {}
+	}
+]

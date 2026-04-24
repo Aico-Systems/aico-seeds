@@ -1,0 +1,348 @@
+[
+	{
+		"organizationId": "_default",
+		"providerKey": "local-tts-voxcpm",
+		"priority": 100,
+		"config": {
+			"model_name": "openbmb/VoxCPM2",
+			"cfg_value": 2.0,
+			"inference_timesteps": 5
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "local-tts-piper",
+		"priority": 40,
+		"config": {
+			"model_path": "/models/de_DE-thorsten-medium.onnx",
+			"config_path": "/models/de_DE-thorsten-medium.onnx.json"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "elevenlabs",
+		"priority": 50,
+		"config": {
+			"voiceId": "CwhRBWXzGAHq8TQ4Fs17",
+			"model": "eleven_flash_v2_5",
+			"stability": 0.5,
+			"similarityBoost": 0.75,
+			"style": 0.0,
+			"useSpeakerBoost": true,
+			"optimizeStreamingLatency": 3,
+			"outputFormat": "mp3_22050_32",
+			"applyTextNormalization": "auto"
+		},
+		"secrets": {
+			"apiKey": "$ELEVENLABS_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "cartesia",
+		"priority": 50,
+		"config": {
+			"voiceId": "sonic-english-male",
+			"model": "sonic-3",
+			"language": "de",
+			"sampleRate": 24000,
+			"encoding": "pcm",
+			"speed": 1.0
+		},
+		"secrets": {
+			"apiKey": "$CARTESIA_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "openai-tts",
+		"priority": 50,
+		"config": {
+			"model": "gpt-4o-mini-tts",
+			"voice": "alloy",
+			"speed": 1.0,
+			"responseFormat": "pcm",
+			"instructions": "",
+			"style": 1.0
+		},
+		"secrets": {
+			"apiKey": "$OPENAI_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "deepgram-tts",
+		"priority": 50,
+		"config": {
+			"model": "aura-2-andromeda-en",
+			"sampleRate": 48000,
+			"encoding": "linear16"
+		},
+		"secrets": {
+			"apiKey": "$DEEPGRAM_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "deepgram",
+		"priority": 50,
+		"config": {
+			"model": "nova-3",
+			"language": "de",
+			"smartFormat": false,
+			"punctuate": false,
+			"profanityFilter": false,
+			"diarize": false,
+			"numerals": true,
+			"endpointingMs": 25,
+			"sentiment": false,
+			"intents": false,
+			"topics": false,
+			"summarize": false
+		},
+		"secrets": {
+			"apiKey": "$DEEPGRAM_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "local-stt-qwen",
+		"priority": 100,
+		"config": {
+			"model_name": "Qwen/Qwen3-ASR-1.7B",
+			"dtype": "bfloat16",
+			"attn_impl": "sdpa"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "local-stt-whisper",
+		"priority": 40,
+		"config": {
+			"model_name": "distil-large-v3",
+			"language": "de",
+			"device": "cpu",
+			"compute_type": "int8"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "gladia",
+		"priority": 50,
+		"config": {
+			"model": "solaria-1",
+			"languages": ["de"],
+			"codeSwitching": true,
+			"endpointing": 0.05,
+			"interimResults": true,
+			"translationEnabled": false,
+			"audioEnhancer": false
+		},
+		"secrets": {
+			"apiKey": "$GLADIA_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "openai-stt",
+		"priority": 50,
+		"config": {
+			"model": "gpt-4o-mini-transcribe",
+			"language": "de",
+			"detectLanguage": false,
+			"noiseReduction": "off",
+			"turnThreshold": 0.5,
+			"includeLogprobs": false,
+			"useRealtime": false
+		},
+		"secrets": {
+			"apiKey": "$OPENAI_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "groq-stt",
+		"priority": 50,
+		"config": {
+			"model": "whisper-large-v3-turbo",
+			"language": "de",
+			"response_format": "json",
+			"temperature": 0.0
+		},
+		"secrets": {
+			"apiKey": "$GROQ_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "microsoft-speech",
+		"priority": 50,
+		"config": {
+			"language": "de-DE",
+			"region": "westeurope",
+			"outputFormat": "detailed",
+			"profanityOption": "masked",
+			"enablePronunciationAssessment": true,
+			"gradingSystem": "HundredMark",
+			"granularity": "Phoneme",
+			"dimension": "Comprehensive",
+			"enableMiscue": false,
+			"enableProsodyAssessment": true,
+			"phonemeAlphabet": "IPA",
+			"nBestPhonemeCount": 5,
+			"audioFormat": "wav",
+			"sampleRate": 16000
+		},
+		"secrets": {
+			"subscriptionKey": "$MICROSOFT_SPEECH_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "openai",
+		"priority": 200,
+		"config": {
+			"model": "gpt-5-mini",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"frequencyPenalty": 0.0,
+			"presencePenalty": 0.0,
+			"streamEnabled": true
+		},
+		"secrets": {
+			"apiKey": "$OPENAI_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "groq",
+		"priority": 50,
+		"config": {
+			"model": "meta-llama/llama-4-scout-17b-16e-instruct",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"streamEnabled": true,
+			"seed": 42,
+			"serviceTier": "auto"
+		},
+		"secrets": {
+			"apiKey": "$GROQ_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "google",
+		"priority": 50,
+		"config": {
+			"model": "gemini-3-flash-preview",
+			"temperature": 0.7,
+			"maxOutputTokens": 1000,
+			"topP": 0.95,
+			"topK": 40,
+			"streamEnabled": true,
+			"thinking_level": "HIGH",
+			"enableGoogleSearch": false
+		},
+		"secrets": {
+			"apiKey": "$GOOGLE_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "anthropic",
+		"priority": 50,
+		"config": {
+			"model": "claude-sonnet-4-6",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"topK": 40,
+			"streamEnabled": true,
+			"effort": "medium",
+			"inferenceGeo": "global"
+		},
+		"secrets": {
+			"apiKey": "$ANTHROPIC_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "qwen",
+		"priority": 50,
+		"config": {
+			"model": "qwen3-max",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"streamEnabled": true,
+			"incremental_output": true,
+			"repetition_penalty": 1.1,
+			"min_p": 0.05
+		},
+		"secrets": {
+			"apiKey": "$QWEN_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "cerebras",
+		"priority": 50,
+		"config": {
+			"model": "gpt-oss-120b",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"streamEnabled": true
+		},
+		"secrets": {
+			"apiKey": "$CEREBRAS_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "deepinfra",
+		"priority": 50,
+		"config": {
+			"model": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"streamEnabled": true
+		},
+		"secrets": {
+			"apiKey": "$DEEPINFRA_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "cli-proxy",
+		"priority": 50,
+		"config": {
+			"model": "claude-sonnet-4-6",
+			"temperature": 0.7,
+			"maxTokens": 4096,
+			"topP": 1.0,
+			"streamEnabled": true
+		},
+		"secrets": {
+			"apiKey": "$CLI_PROXY_API_KEY"
+		}
+	},
+	{
+		"organizationId": "_default",
+		"providerKey": "fireworks",
+		"priority": 50,
+		"config": {
+			"model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+			"temperature": 0.7,
+			"maxTokens": 1000,
+			"topP": 1.0,
+			"streamEnabled": true
+		},
+		"secrets": {
+			"apiKey": "$FIREWORKS_API_KEY"
+		}
+	}
+]

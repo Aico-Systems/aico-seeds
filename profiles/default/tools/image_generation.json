@@ -1,0 +1,57 @@
+[
+	{
+		"organizationId": null,
+		"name": "generate_image",
+		"description": "Generate an image from a text description using DALL-E and store it as a permanent asset. Returns a public URL that can be sent via message nodes.",
+		"category": "media",
+		"tags": ["image", "generation", "dalle", "media", "ai"],
+		"runtime": "worker",
+		"version": "1.0.0",
+		"author": "system",
+		"permissions": ["network"],
+		"parameters": {
+			"prompt": {
+				"type": "string",
+				"description": "Description of the image to generate. Be specific and vivid for better results.",
+				"required": true
+			},
+			"style": {
+				"type": "string",
+				"description": "Image style hint prepended to the prompt (e.g., 'pixel art', 'watercolor', 'photorealistic', 'dark fantasy illustration')",
+				"required": false
+			},
+			"size": {
+				"type": "string",
+				"description": "Image dimensions",
+				"required": false,
+				"enum": ["1024x1024", "1024x1792", "1792x1024"],
+				"default": "1024x1024"
+			},
+			"quality": {
+				"type": "string",
+				"description": "Image quality (standard is faster and cheaper)",
+				"required": false,
+				"enum": ["standard", "hd"],
+				"default": "standard"
+			}
+		},
+		"handlerCode": "export async function handler(context, parameters) {\n  const apiKey = context.secrets?.OPENAI_API_KEY;\n  if (!apiKey) {\n    return { success: false, error: 'Missing OPENAI_API_KEY in tool secrets' };\n  }\n\n  const backendUrl = context.secrets?.BACKEND_URL;\n  if (!backendUrl) {\n    return { success: false, error: 'Missing BACKEND_URL in tool secrets' };\n  }\n\n  const internalKey = context.secrets?.AICO_INTERNAL_API_KEY;\n\n  // Build prompt with optional style\n  const fullPrompt = parameters.style\n    ? `${parameters.style}: ${parameters.prompt}`\n    : parameters.prompt;\n\n  console.log(`Generating image: ${fullPrompt.substring(0, 100)}...`);\n\n  // 1. Generate image via DALL-E\n  const genResponse = await fetch('https://api.openai.com/v1/images/generations', {\n    method: 'POST',\n    headers: {\n      'Authorization': `Bearer ${apiKey}`,\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({\n      model: 'dall-e-3',\n      prompt: fullPrompt,\n      size: parameters.size || '1024x1024',\n      quality: parameters.quality || 'standard',\n      n: 1,\n    }),\n  });\n\n  if (!genResponse.ok) {\n    const err = await genResponse.text();\n    return { success: false, error: `DALL-E API error (${genResponse.status}): ${err}` };\n  }\n\n  const genResult = await genResponse.json();\n  const tempUrl = genResult.data?.[0]?.url;\n  const revisedPrompt = genResult.data?.[0]?.revised_prompt;\n\n  if (!tempUrl) {\n    return { success: false, error: 'No image URL in DALL-E response' };\n  }\n\n  console.log('Image generated, storing as asset...');\n\n  // 2. Store as permanent asset via backend API\n  const storeHeaders = {\n    'Content-Type': 'application/json',\n    'X-Organization-Id': context.organizationId,\n  };\n  if (internalKey) {\n    storeHeaders['Authorization'] = `Bearer ${internalKey}`;\n  }\n\n  const storeResponse = await fetch(`${backendUrl}/dev/api/assets/from-url`, {\n    method: 'POST',\n    headers: storeHeaders,\n    body: JSON.stringify({ url: tempUrl }),\n  });\n\n  if (!storeResponse.ok) {\n    const err = await storeResponse.text();\n    return {\n      success: true,\n      output: {\n        imageUrl: tempUrl,\n        revisedPrompt,\n        warning: `Image generated but asset storage failed (${storeResponse.status}): ${err}. Using temporary URL.`,\n      },\n    };\n  }\n\n  const asset = await storeResponse.json();\n  console.log(`Image stored: ${asset.publicUrl}`);\n\n  return {\n    success: true,\n    output: {\n      imageUrl: asset.publicUrl,\n      assetKey: asset.key,\n      revisedPrompt,\n    },\n  };\n}",
+		"examples": [
+			{
+				"name": "Fantasy scene",
+				"description": "Generate a dark fantasy scene",
+				"parameters": {
+					"prompt": "A crumbling stone tower at the edge of a misty forest, lit by a single torch",
+					"style": "dark fantasy illustration",
+					"size": "1024x1024"
+				}
+			}
+		],
+		"testCases": [],
+		"isBuiltIn": true,
+		"isPublic": true,
+		"metadata": {
+			"allowedDomains": ["api.openai.com", "oaidalleapiprodscus.blob.core.windows.net", "*.oaiusercontent.com", "localhost:*", "*.aicoflow.xyz", "*.aicoflow.com"]
+		}
+	}
+]

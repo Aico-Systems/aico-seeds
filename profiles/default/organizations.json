@@ -1,0 +1,34 @@
+[
+	{
+		"id": "_default",
+		"name": "Default Organization Template",
+		"metadata": {
+			"description": "Template applied to all organizations. NOT inserted into the database directly — OrganizationSeeder uses it to fill defaults on every real org.",
+			"tier": "default",
+			"createdBy": "bootstrap"
+		},
+		"secrets": {
+			"livekit": {
+				"apiKey": null,
+				"apiSecret": null
+			}
+		},
+		"config": {
+			"livekit": {
+				"url": null,
+				"wsUrl": null,
+				"publicUrl": null,
+				"publicWsUrl": null,
+				"agentName": null,
+				"agentWorkerQueue": "aico-agent"
+			},
+			"telnyx": {
+				"phoneNumber": null,
+				"sipServer": "sip.telnyx.com",
+				"sipTrunkName": null,
+				"publicHost": null,
+				"publicPort": null
+			}
+		}
+	}
+]
