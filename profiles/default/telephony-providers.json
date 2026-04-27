@@ -5,9 +5,6 @@
 		"name": "Telnyx (Global)",
 		"config": {
 			"sipServer": "sip.telnyx.com"
-		},
-		"secrets": {
-			"apiKey": "$TELNYX_API_KEY"
 		}
 	},
 	{
@@ -16,9 +13,6 @@
 		"name": "Twilio (Global)",
 		"config": {
 			"sipServer": "pstn.twilio.com"
-		},
-		"secrets": {
-			"apiKey": "$TWILIO_AUTH_TOKEN"
 		}
 	}
 ]

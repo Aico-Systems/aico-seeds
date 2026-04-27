@@ -32,9 +32,6 @@
 			"optimizeStreamingLatency": 3,
 			"outputFormat": "mp3_22050_32",
 			"applyTextNormalization": "auto"
-		},
-		"secrets": {
-			"apiKey": "$ELEVENLABS_API_KEY"
 		}
 	},
 	{
@@ -48,9 +45,6 @@
 			"sampleRate": 24000,
 			"encoding": "pcm",
 			"speed": 1.0
-		},
-		"secrets": {
-			"apiKey": "$CARTESIA_API_KEY"
 		}
 	},
 	{
@@ -64,9 +58,6 @@
 			"responseFormat": "pcm",
 			"instructions": "",
 			"style": 1.0
-		},
-		"secrets": {
-			"apiKey": "$OPENAI_API_KEY"
 		}
 	},
 	{
@@ -77,9 +68,6 @@
 			"model": "aura-2-andromeda-en",
 			"sampleRate": 48000,
 			"encoding": "linear16"
-		},
-		"secrets": {
-			"apiKey": "$DEEPGRAM_API_KEY"
 		}
 	},
 	{
@@ -99,9 +87,6 @@
 			"intents": false,
 			"topics": false,
 			"summarize": false
-		},
-		"secrets": {
-			"apiKey": "$DEEPGRAM_API_KEY"
 		}
 	},
 	{
@@ -137,9 +122,6 @@
 			"interimResults": true,
 			"translationEnabled": false,
 			"audioEnhancer": false
-		},
-		"secrets": {
-			"apiKey": "$GLADIA_API_KEY"
 		}
 	},
 	{
@@ -154,9 +136,6 @@
 			"turnThreshold": 0.5,
 			"includeLogprobs": false,
 			"useRealtime": false
-		},
-		"secrets": {
-			"apiKey": "$OPENAI_API_KEY"
 		}
 	},
 	{
@@ -168,9 +147,6 @@
 			"language": "de",
 			"response_format": "json",
 			"temperature": 0.0
-		},
-		"secrets": {
-			"apiKey": "$GROQ_API_KEY"
 		}
 	},
 	{
@@ -192,9 +168,6 @@
 			"nBestPhonemeCount": 5,
 			"audioFormat": "wav",
 			"sampleRate": 16000
-		},
-		"secrets": {
-			"subscriptionKey": "$MICROSOFT_SPEECH_KEY"
 		}
 	},
 	{
@@ -209,9 +182,6 @@
 			"frequencyPenalty": 0.0,
 			"presencePenalty": 0.0,
 			"streamEnabled": true
-		},
-		"secrets": {
-			"apiKey": "$OPENAI_API_KEY"
 		}
 	},
 	{
@@ -226,9 +196,6 @@
 			"streamEnabled": true,
 			"seed": 42,
 			"serviceTier": "auto"
-		},
-		"secrets": {
-			"apiKey": "$GROQ_API_KEY"
 		}
 	},
 	{
@@ -244,9 +211,6 @@
 			"streamEnabled": true,
 			"thinking_level": "HIGH",
 			"enableGoogleSearch": false
-		},
-		"secrets": {
-			"apiKey": "$GOOGLE_API_KEY"
 		}
 	},
 	{
@@ -262,9 +226,6 @@
 			"streamEnabled": true,
 			"effort": "medium",
 			"inferenceGeo": "global"
-		},
-		"secrets": {
-			"apiKey": "$ANTHROPIC_API_KEY"
 		}
 	},
 	{
@@ -280,9 +241,6 @@
 			"incremental_output": true,
 			"repetition_penalty": 1.1,
 			"min_p": 0.05
-		},
-		"secrets": {
-			"apiKey": "$QWEN_API_KEY"
 		}
 	},
 	{
@@ -295,9 +253,6 @@
 			"maxTokens": 1000,
 			"topP": 1.0,
 			"streamEnabled": true
-		},
-		"secrets": {
-			"apiKey": "$CEREBRAS_API_KEY"
 		}
 	},
 	{
@@ -310,9 +265,6 @@
 			"maxTokens": 1000,
 			"topP": 1.0,
 			"streamEnabled": true
-		},
-		"secrets": {
-			"apiKey": "$DEEPINFRA_API_KEY"
 		}
 	},
 	{
@@ -325,9 +277,6 @@
 			"maxTokens": 4096,
 			"topP": 1.0,
 			"streamEnabled": true
-		},
-		"secrets": {
-			"apiKey": "$CLI_PROXY_API_KEY"
 		}
 	},
 	{
@@ -340,9 +289,6 @@
 			"maxTokens": 1000,
 			"topP": 1.0,
 			"streamEnabled": true
-		},
-		"secrets": {
-			"apiKey": "$FIREWORKS_API_KEY"
 		}
 	}
 ]
