@@ -1,7 +1,7 @@
 [
 	{
 		"organizationId": "_default",
-		"providerKey": "local-tts-voxcpm",
+		"providerKey": "local-tts-voxcpm-2b",
 		"priority": 100,
 		"config": {
 			"model_name": "openbmb/VoxCPM2",
@@ -11,7 +11,7 @@
 	},
 	{
 		"organizationId": "_default",
-		"providerKey": "local-tts-piper",
+		"providerKey": "local-tts-piper-de",
 		"priority": 40,
 		"config": {
 			"model_path": "/models/de_DE-thorsten-medium.onnx",
@@ -91,7 +91,7 @@
 	},
 	{
 		"organizationId": "_default",
-		"providerKey": "local-stt-qwen",
+		"providerKey": "local-stt-qwen3-asr-1.7b",
 		"priority": 100,
 		"config": {
 			"model_name": "Qwen/Qwen3-ASR-1.7B",
@@ -101,7 +101,7 @@
 	},
 	{
 		"organizationId": "_default",
-		"providerKey": "local-stt-whisper",
+		"providerKey": "local-stt-whisper-large-v3",
 		"priority": 40,
 		"config": {
 			"model_name": "distil-large-v3",

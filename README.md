@@ -22,8 +22,3 @@ Any JSON string matching `"$VAR_NAME"` is resolved against `process.env`
 at seed time. Keep real credentials out of this repo — use placeholders
 and provide the values through the deployment's secret source (Doppler,
 Vault, Kubernetes Secrets, partner's own `.env`).
-
-## Schema
-
-`schema/` holds JSON Schema definitions for each file type. Validated at
-seed time so a broken JSON fails loud before touching the DB.
