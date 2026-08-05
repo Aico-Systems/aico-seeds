@@ -63,8 +63,41 @@
 		],
 		"isBuiltIn": true,
 		"isPublic": true,
-		"metadata": {
-			"allowedDomains": ["*.typicode.com", "*.example.com"]
-		}
+		"metadata": {}
+	},
+	{
+		"organizationId": null,
+		"name": "org_directory",
+		"description": "List the organization's members as callable targets. Each entry has an identifier (user:<id>) directly usable as an invoke-node call target or transfer destination, plus name, username, email and organization roles. Use to decide WHO to call/consult dynamically.",
+		"category": "organization",
+		"tags": ["directory", "users", "call", "consult", "routing"],
+		"type": "builtin",
+		"handler": "builtin:org_directory",
+		"runtime": "worker",
+		"version": "1.0.0",
+		"author": "system",
+		"permissions": [],
+		"parameters": {
+			"query": {
+				"type": "string",
+				"description": "Optional case-insensitive filter matched against name, username, email and role names (e.g. a role like 'Supervisor' or a person's name)",
+				"required": false
+			}
+		},
+		"examples": [
+			{
+				"name": "Full directory",
+				"description": "List every callable member of the organization",
+				"parameters": {}
+			},
+			{
+				"name": "Filter by role",
+				"description": "Only members whose name/username/email/role matches",
+				"parameters": { "query": "Supervisor" }
+			}
+		],
+		"isBuiltIn": true,
+		"isPublic": true,
+		"metadata": {}
 	}
 ]

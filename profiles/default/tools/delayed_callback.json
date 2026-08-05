@@ -6,6 +6,7 @@
 		"category": "utility",
 		"tags": ["test", "async", "callback", "webhook"],
 		"runtime": "worker",
+		"permissions": ["network"],
 		"version": "1.0.0",
 		"parameters": {
 			"delay_ms": {
