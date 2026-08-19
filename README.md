@@ -6,10 +6,10 @@ Ships with every AICO install. Safe for public release.
 ## Profiles
 
 - **`profiles/default/`** — minimum required platform data (provider configs
-  with `$VAR` placeholders, standard tool catalog, default-org template).
+  without credentials, standard tool catalog, the `_default` org template).
   This is what a fresh partner install seeds when `SEED_PROFILE=default`.
-- **`profiles/none/`** — empty; for deployments that provision their seed
-  data out-of-band (`SEED_PROFILE=none`).
+- **`SEED_PROFILE=none`** — nothing is seeded; for deployments that provision
+  their data out-of-band.
 
 ## Sister repo
 
@@ -18,7 +18,9 @@ live in `aico-seeds-demo`.
 
 ## Env-var substitution
 
-Any JSON string matching `"$VAR_NAME"` is resolved against `process.env`
-at seed time. Keep real credentials out of this repo — use placeholders
-and provide the values through the deployment's secret source (Doppler,
-Vault, Kubernetes Secrets, partner's own `.env`).
+Any JSON string that is exactly `"$VAR_NAME"` is resolved against
+`process.env` at seed time (`backend/src/seeds/loaders/SeedLoader.ts`); an
+unset variable seeds as `""` and is logged. Keep real credentials out of this
+repo — add `secrets` blocks with placeholders and provide the values through
+the deployment's secret source (Doppler, Vault, Kubernetes Secrets, the
+partner's own `.env`).

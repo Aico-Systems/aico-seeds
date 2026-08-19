@@ -175,7 +175,7 @@
 		"providerKey": "openai",
 		"priority": 200,
 		"config": {
-			"model": "gpt-5-mini",
+			"model": "gpt-5.6-luna",
 			"temperature": 0.7,
 			"maxTokens": 1000,
 			"topP": 1.0,
