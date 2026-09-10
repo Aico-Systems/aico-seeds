@@ -4,11 +4,18 @@
 		"name": "http_request",
 		"description": "Make HTTP requests to external APIs with automatic retry logic and error handling",
 		"category": "network",
-		"tags": ["http", "api", "fetch", "network"],
+		"tags": [
+			"http",
+			"api",
+			"fetch",
+			"network"
+		],
 		"runtime": "worker",
 		"version": "1.0.0",
 		"author": "system",
-		"permissions": ["network"],
+		"permissions": [
+			"network"
+		],
 		"parameters": {
 			"url": {
 				"type": "string",
@@ -19,7 +26,13 @@
 				"type": "string",
 				"description": "HTTP method",
 				"required": false,
-				"enum": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+				"enum": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE",
+					"PATCH"
+				],
 				"default": "GET"
 			},
 			"headers": {
@@ -70,7 +83,13 @@
 		"name": "org_directory",
 		"description": "List the organization's members as callable targets. Each entry has an identifier (user:<id>) directly usable as an invoke-node call target or transfer destination, plus name, username, email and organization roles. Use to decide WHO to call/consult dynamically.",
 		"category": "organization",
-		"tags": ["directory", "users", "call", "consult", "routing"],
+		"tags": [
+			"directory",
+			"users",
+			"call",
+			"consult",
+			"routing"
+		],
 		"type": "builtin",
 		"handler": "builtin:org_directory",
 		"runtime": "worker",
@@ -93,11 +112,45 @@
 			{
 				"name": "Filter by role",
 				"description": "Only members whose name/username/email/role matches",
-				"parameters": { "query": "Supervisor" }
+				"parameters": {
+					"query": "Supervisor"
+				}
 			}
 		],
 		"isBuiltIn": true,
 		"isPublic": true,
 		"metadata": {}
+	},
+	{
+		"organizationId": null,
+		"name": "send_message",
+		"type": "builtin",
+		"handler": "builtin:send_message",
+		"description": "Send a message on another channel (e.g. SMS or WhatsApp) to a recipient WITHOUT interrupting the current conversation — for example, text a booking link or address during a voice call. Fire-and-forget; a reply comes back as a separate session. Use when the useful thing to hand the user is a link, code, or address they cannot act on by voice.",
+		"parameters": {
+			"channel": {
+				"type": "string",
+				"description": "Channel to send on, e.g. 'sms' or 'whatsapp'",
+				"required": true
+			},
+			"target": {
+				"type": "string",
+				"description": "Recipient address (phone number for sms/whatsapp). Resolve from a variable you already hold.",
+				"required": true
+			},
+			"message": {
+				"type": "string",
+				"description": "The message text to send.",
+				"required": true
+			}
+		},
+		"isBuiltIn": true,
+		"isPublic": true,
+		"category": "communication",
+		"tags": [
+			"channel",
+			"outbound",
+			"messaging"
+		]
 	}
 ]
