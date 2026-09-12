@@ -41,7 +41,6 @@
 		"config": {
 			"voiceId": "sonic-english-male",
 			"model": "sonic-3",
-			"language": "de",
 			"sampleRate": 24000,
 			"encoding": "pcm",
 			"speed": 1.0
@@ -76,7 +75,7 @@
 		"priority": 50,
 		"config": {
 			"model": "nova-3",
-			"language": "de",
+			"language": "multi",
 			"smartFormat": false,
 			"punctuate": false,
 			"profanityFilter": false,
@@ -105,7 +104,6 @@
 		"priority": 40,
 		"config": {
 			"model_name": "distil-large-v3",
-			"language": "de",
 			"device": "cpu",
 			"compute_type": "int8"
 		}
@@ -116,7 +114,6 @@
 		"priority": 50,
 		"config": {
 			"model": "solaria-1",
-			"languages": ["de"],
 			"codeSwitching": true,
 			"endpointing": 0.05,
 			"interimResults": true,
@@ -130,8 +127,6 @@
 		"priority": 50,
 		"config": {
 			"model": "gpt-4o-mini-transcribe",
-			"language": "de",
-			"detectLanguage": false,
 			"noiseReduction": "off",
 			"turnThreshold": 0.5,
 			"includeLogprobs": false,
@@ -144,7 +139,6 @@
 		"priority": 50,
 		"config": {
 			"model": "whisper-large-v3-turbo",
-			"language": "de",
 			"response_format": "json",
 			"temperature": 0.0
 		}
@@ -154,7 +148,6 @@
 		"providerKey": "microsoft-speech",
 		"priority": 50,
 		"config": {
-			"language": "de-DE",
 			"region": "westeurope",
 			"outputFormat": "detailed",
 			"profanityOption": "masked",
