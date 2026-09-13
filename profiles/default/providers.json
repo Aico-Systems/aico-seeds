@@ -92,21 +92,13 @@
 		"organizationId": "_default",
 		"providerKey": "local-stt-qwen3-asr-1.7b",
 		"priority": 100,
-		"config": {
-			"model_name": "Qwen/Qwen3-ASR-1.7B",
-			"dtype": "bfloat16",
-			"attn_impl": "sdpa"
-		}
+		"config": {}
 	},
 	{
 		"organizationId": "_default",
 		"providerKey": "local-stt-whisper-large-v3",
 		"priority": 40,
-		"config": {
-			"model_name": "distil-large-v3",
-			"device": "cpu",
-			"compute_type": "int8"
-		}
+		"config": {}
 	},
 	{
 		"organizationId": "_default",
