@@ -123,6 +123,76 @@
 	},
 	{
 		"organizationId": null,
+		"name": "find_colleague",
+		"description": "Find the colleagues best placed to help with a problem, from the company brain: who holds a role, has a skill, is responsible for a thing, or has been consulted about similar matters — presence-aware. Returns ranked candidates, each with a reason and an identifier (user:<id>) usable as an invoke-node call target or a handoff destination, plus `suggested` (the top candidate). Use when the flow lets the assistant decide WHO to bring in; prefer a fixed rule on the invoke node (role:…, responsible_for:…) when the organization's policy already says who.",
+		"category": "organization",
+		"tags": [
+			"directory",
+			"routing",
+			"consult",
+			"colleague",
+			"brain"
+		],
+		"type": "builtin",
+		"handler": "builtin:find_colleague",
+		"runtime": "worker",
+		"version": "1.0.0",
+		"author": "system",
+		"permissions": [],
+		"parameters": {
+			"problem": {
+				"type": "string",
+				"description": "What needs solving, in the user's words — matched against what the organization knows about people",
+				"required": false
+			},
+			"role": {
+				"type": "string",
+				"description": "Narrow to people holding this role (e.g. the shift lead role)",
+				"required": false
+			},
+			"skill": {
+				"type": "string",
+				"description": "Narrow to people with this skill",
+				"required": false
+			},
+			"responsibleFor": {
+				"type": "string",
+				"description": "Narrow to people responsible for this thing (an asset, an area, a process)",
+				"required": false
+			},
+			"team": {
+				"type": "string",
+				"description": "Narrow to members of this team",
+				"required": false
+			},
+			"limit": {
+				"type": "number",
+				"description": "Maximum candidates (default 5, max 10)",
+				"required": false
+			}
+		},
+		"examples": [
+			{
+				"name": "By problem",
+				"description": "Let the brain rank people for a described problem",
+				"parameters": {
+					"problem": "the hydraulic lift on the forklift is stuck"
+				}
+			},
+			{
+				"name": "By responsibility",
+				"description": "Whoever is responsible for a specific asset",
+				"parameters": {
+					"responsibleFor": "Stapler 3"
+				}
+			}
+		],
+		"isBuiltIn": true,
+		"isPublic": true,
+		"metadata": {}
+	},
+	{
+		"organizationId": null,
 		"name": "send_message",
 		"type": "builtin",
 		"handler": "builtin:send_message",
