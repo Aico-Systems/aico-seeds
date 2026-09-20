@@ -1,0 +1,34 @@
+[
+	{
+		"organizationId": "_default",
+		"feeds": [
+			{
+				"key": "device",
+				"label": "Device location",
+				"mapping": {
+					"subject": { "type": "person", "path": "subject", "by": "identifier" },
+					"occurredAtPath": "at",
+					"statements": [
+						{
+							"property": "located_at",
+							"factText": "{subject} is at {object}.",
+							"object": {
+								"type": "location",
+								"by": "resolve",
+								"resolve": {
+									"chain": [
+										{ "kind": "beacon", "idsPath": "beacons" },
+										{ "kind": "geofence", "latPath": "lat", "lonPath": "lon", "accuracyPath": "accuracyM" }
+									],
+									"holdMs": 20000
+								}
+							}
+						},
+						{ "property": "status", "valuePath": "status", "whenPath": "status", "factText": "{subject} is {value}." }
+					],
+					"signalRetentionDays": 7
+				}
+			}
+		]
+	}
+]

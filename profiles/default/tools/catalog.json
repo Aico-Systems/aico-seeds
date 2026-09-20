@@ -1,6 +1,6 @@
 [
 	{
-		"organizationId": null,
+		"organizationId": "_default",
 		"name": "http_request",
 		"description": "Make HTTP requests to external APIs with automatic retry logic and error handling",
 		"category": "network",
@@ -10,9 +10,6 @@
 			"fetch",
 			"network"
 		],
-		"runtime": "worker",
-		"version": "1.0.0",
-		"author": "system",
 		"permissions": [
 			"network"
 		],
@@ -52,16 +49,6 @@
 			}
 		},
 		"handlerCode": "export async function handler(context, parameters) {\n  const url = parameters.url;\n  const method = parameters.method || 'GET';\n  const headers = parameters.headers || {};\n  let body = parameters.body;\n\n  // Support body_data as object (auto-stringified)\n  if (!body && parameters.body_data) {\n    body = JSON.stringify(parameters.body_data);\n  }\n\n  console.log(`Making ${method} request to ${url}`);\n\n  try {\n    const options = {\n      method: method,\n      headers: headers\n    };\n\n    if (body && ['POST', 'PUT', 'PATCH'].includes(method)) {\n      options.body = body;\n    }\n\n    const response = await fetch(url, options);\n    const responseText = await response.text();\n\n    let responseData;\n    try {\n      responseData = JSON.parse(responseText);\n    } catch {\n      responseData = responseText;\n    }\n\n    return {\n      success: response.ok,\n      output: {\n        status: response.status,\n        statusText: response.statusText,\n        data: responseData,\n        headers: Object.fromEntries(response.headers.entries())\n      }\n    };\n  } catch (error) {\n    return {\n      success: false,\n      error: `HTTP request failed: ${error.message}`\n    };\n  }\n}",
-		"examples": [
-			{
-				"name": "GET request example",
-				"description": "Fetch data from JSONPlaceholder API",
-				"parameters": {
-					"url": "https://jsonplaceholder.typicode.com/posts/1",
-					"method": "GET"
-				}
-			}
-		],
 		"testCases": [
 			{
 				"name": "Test GET request",
@@ -75,11 +62,10 @@
 			}
 		],
 		"isBuiltIn": true,
-		"isPublic": true,
 		"metadata": {}
 	},
 	{
-		"organizationId": null,
+		"organizationId": "_default",
 		"name": "org_directory",
 		"description": "List the organization's members as callable targets. Each entry has an identifier (user:<id>) directly usable as an invoke-node call target or transfer destination, plus name, username, email and organization roles. Use to decide WHO to call/consult dynamically.",
 		"category": "organization",
@@ -92,9 +78,6 @@
 		],
 		"type": "builtin",
 		"handler": "builtin:org_directory",
-		"runtime": "worker",
-		"version": "1.0.0",
-		"author": "system",
 		"permissions": [],
 		"parameters": {
 			"query": {
@@ -103,26 +86,11 @@
 				"required": false
 			}
 		},
-		"examples": [
-			{
-				"name": "Full directory",
-				"description": "List every callable member of the organization",
-				"parameters": {}
-			},
-			{
-				"name": "Filter by role",
-				"description": "Only members whose name/username/email/role matches",
-				"parameters": {
-					"query": "Supervisor"
-				}
-			}
-		],
 		"isBuiltIn": true,
-		"isPublic": true,
 		"metadata": {}
 	},
 	{
-		"organizationId": null,
+		"organizationId": "_default",
 		"name": "find_colleague",
 		"description": "Find the colleagues best placed to help with a problem, from the company brain: who holds a role, has a skill, is responsible for a thing, or has been consulted about similar matters — presence-aware. Returns ranked candidates, each with a reason and an identifier (user:<id>) usable as an invoke-node call target or a handoff destination, plus `suggested` (the top candidate). Use when the flow lets the assistant decide WHO to bring in; prefer a fixed rule on the invoke node (role:…, responsible_for:…) when the organization's policy already says who.",
 		"category": "organization",
@@ -135,9 +103,6 @@
 		],
 		"type": "builtin",
 		"handler": "builtin:find_colleague",
-		"runtime": "worker",
-		"version": "1.0.0",
-		"author": "system",
 		"permissions": [],
 		"parameters": {
 			"problem": {
@@ -171,28 +136,11 @@
 				"required": false
 			}
 		},
-		"examples": [
-			{
-				"name": "By problem",
-				"description": "Let the brain rank people for a described problem",
-				"parameters": {
-					"problem": "the hydraulic lift on the forklift is stuck"
-				}
-			},
-			{
-				"name": "By responsibility",
-				"description": "Whoever is responsible for a specific asset",
-				"parameters": {
-					"responsibleFor": "Stapler 3"
-				}
-			}
-		],
 		"isBuiltIn": true,
-		"isPublic": true,
 		"metadata": {}
 	},
 	{
-		"organizationId": null,
+		"organizationId": "_default",
 		"name": "send_message",
 		"type": "builtin",
 		"handler": "builtin:send_message",
@@ -215,7 +163,6 @@
 			}
 		},
 		"isBuiltIn": true,
-		"isPublic": true,
 		"category": "communication",
 		"tags": [
 			"channel",

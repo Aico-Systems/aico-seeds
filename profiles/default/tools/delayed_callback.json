@@ -4,10 +4,15 @@
 		"name": "delayed_callback",
 		"description": "Returns async=true immediately, then POSTs the result to the callbackUrl after a configurable delay. Useful for testing async tool patterns and webhook flows.",
 		"category": "utility",
-		"tags": ["test", "async", "callback", "webhook"],
-		"runtime": "worker",
-		"permissions": ["network"],
-		"version": "1.0.0",
+		"tags": [
+			"test",
+			"async",
+			"callback",
+			"webhook"
+		],
+		"permissions": [
+			"network"
+		],
 		"parameters": {
 			"delay_ms": {
 				"type": "number",
