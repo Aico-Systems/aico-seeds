@@ -91,6 +91,30 @@
 	},
 	{
 		"organizationId": "_default",
+		"name": "web_search",
+		"description": "Search the web and answer briefly with sources: current events, facts, weather, opening hours, places. Use instead of guessing whenever the question is about the outside world. A place the answer depends on must be in the query.",
+		"category": "internet",
+		"tags": [
+			"internet",
+			"search",
+			"weather",
+			"places"
+		],
+		"type": "builtin",
+		"handler": "builtin:web_search",
+		"permissions": [],
+		"parameters": {
+			"query": {
+				"type": "string",
+				"description": "The question in the person's own words, including any place it is about.",
+				"required": true
+			}
+		},
+		"isBuiltIn": true,
+		"metadata": {}
+	},
+	{
+		"organizationId": "_default",
 		"name": "find_colleague",
 		"description": "Find the colleagues best placed to help with a problem, from the company brain: who holds a role, has a skill, is responsible for a thing, or has been consulted about similar matters — presence-aware. Returns ranked candidates, each with a reason and an identifier (user:<id>) usable as an invoke-node call target or a handoff destination, plus `suggested` (the top candidate). Use when the flow lets the assistant decide WHO to bring in; prefer a fixed rule on the invoke node (role:…, responsible_for:…) when the organization's policy already says who.",
 		"category": "organization",
