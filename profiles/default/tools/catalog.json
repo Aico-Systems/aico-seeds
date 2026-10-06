@@ -44,7 +44,7 @@
 			},
 			"body_data": {
 				"type": "object",
-				"description": "Request body as object (auto-stringified to JSON). Use instead of body for structured data with @variable interpolation.",
+				"description": "Request body as object (auto-stringified to JSON). Use instead of body for structured data; string values may be templates over the read view (@input, @result.<node>).",
 				"required": false
 			}
 		},
@@ -177,7 +177,7 @@
 			},
 			"target": {
 				"type": "string",
-				"description": "Recipient address (phone number for sms/whatsapp). Resolve from a variable you already hold.",
+				"description": "Recipient address (phone number for sms/whatsapp): the number the conversation or a flow input names - never guessed.",
 				"required": true
 			},
 			"message": {
@@ -192,6 +192,7 @@
 			"channel",
 			"outbound",
 			"messaging"
-		]
+		],
+		"reachesPeople": true
 	}
 ]
