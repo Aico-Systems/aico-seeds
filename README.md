@@ -1,6 +1,6 @@
 # aico-seeds
 
-Platform-baseline seed data for [AICO](https://github.com/Aico-Systems/aicoyo).
+Platform-baseline seed data for [AICO](https://github.com/Aico-Systems/Umbrella).
 Ships with every AICO install. Safe for public release.
 
 ## Profiles
