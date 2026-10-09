@@ -1,12 +1,10 @@
 [
 	{
 		"organizationId": "_default",
-		"providerKey": "local-tts-voxcpm-2b",
+		"providerKey": "local-tts-pocket-de",
 		"priority": 100,
 		"config": {
-			"model_name": "openbmb/VoxCPM2",
-			"cfg_value": 2.0,
-			"inference_timesteps": 5
+			"voice": "juergen"
 		}
 	},
 	{
