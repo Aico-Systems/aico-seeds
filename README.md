@@ -11,6 +11,9 @@ Ships with every AICO install. Safe for public release.
 - **`SEED_PROFILE=none`** — nothing is seeded; for deployments that provision
   their data out-of-band.
 
+The backend loads a profile on boot and applies it by `SEED_STRATEGY`
+(`backend/src/seeds/README.md`). In host mode `just reseed` re-applies it.
+
 ## Sister repo
 
 Demo/lab/test fixtures (private; TEST/DEMO/customer orgs, sample flows)
