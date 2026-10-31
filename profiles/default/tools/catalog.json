@@ -2,7 +2,7 @@
 	{
 		"organizationId": "_default",
 		"name": "http_request",
-		"description": "Make HTTP requests to external APIs with automatic retry logic and error handling",
+		"description": "Make HTTP requests to external APIs - one attempt; the status and body come back as the result, a network failure as an error",
 		"category": "network",
 		"tags": [
 			"http",
@@ -82,7 +82,7 @@
 		"parameters": {
 			"query": {
 				"type": "string",
-				"description": "Optional case-insensitive filter matched against name, username, email and role names (e.g. a role like 'Supervisor' or a person's name)",
+				"description": "Optional case-insensitive filter matched against name, username, email and role names (a role or a person's name)",
 				"required": false
 			}
 		},
@@ -136,7 +136,7 @@
 			},
 			"role": {
 				"type": "string",
-				"description": "Narrow to people holding this role (e.g. the shift lead role)",
+				"description": "Narrow to people holding this role",
 				"required": false
 			},
 			"skill": {
@@ -168,11 +168,11 @@
 		"name": "send_message",
 		"type": "builtin",
 		"handler": "builtin:send_message",
-		"description": "Send a message on another channel (e.g. SMS or WhatsApp) to a recipient WITHOUT interrupting the current conversation — for example, text a booking link or address during a voice call. Fire-and-forget; a reply comes back as a separate session. Use when the useful thing to hand the user is a link, code, or address they cannot act on by voice.",
+		"description": "Send a message on another channel (SMS or WhatsApp) to a recipient WITHOUT interrupting the current conversation. Fire-and-forget; a reply comes back as a separate session. Use when the useful thing to hand the user is a link, code, or address they cannot act on by voice.",
 		"parameters": {
 			"channel": {
 				"type": "string",
-				"description": "Channel to send on, e.g. 'sms' or 'whatsapp'",
+				"description": "Channel to send on: 'sms' or 'whatsapp'",
 				"required": true
 			},
 			"target": {
