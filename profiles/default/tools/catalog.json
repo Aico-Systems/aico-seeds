@@ -66,6 +66,51 @@
 	},
 	{
 		"organizationId": "_default",
+		"name": "knowledge_search",
+		"description": "Search the organization's knowledge bases: the hits (content, score, sourceType; term and synonyms for terminology; metadata) are the output, best first. The query is split at commas, semicolons, newlines and 'and' into items searched in parallel. No hits is a success with an empty output.",
+		"category": "knowledge",
+		"tags": [
+			"knowledge",
+			"search",
+			"rag",
+			"documents",
+			"terminology"
+		],
+		"type": "builtin",
+		"handler": "builtin:knowledge_search",
+		"permissions": [],
+		"parameters": {
+			"query": {
+				"type": "string",
+				"description": "What to look up, in a few words",
+				"required": true
+			},
+			"knowledgeBaseIds": {
+				"type": "array",
+				"description": "Restrict the search to these knowledge bases; empty searches all of the organization's",
+				"required": false
+			},
+			"maxResults": {
+				"type": "number",
+				"description": "How many hits at most",
+				"required": false,
+				"default": 5
+			},
+			"sourceType": {
+				"type": "string",
+				"description": "Which kind of knowledge to search; absent searches both",
+				"required": false,
+				"enum": [
+					"terminology",
+					"knowledge_base"
+				]
+			}
+		},
+		"isBuiltIn": true,
+		"metadata": {}
+	},
+	{
+		"organizationId": "_default",
 		"name": "org_directory",
 		"description": "List the organization's members as callable targets. Each entry has an identifier (user:<id>) directly usable as an invoke-node call target or transfer destination, plus name, username, email and organization roles. Use to decide WHO to call/consult dynamically.",
 		"category": "organization",
