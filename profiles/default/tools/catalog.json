@@ -220,7 +220,7 @@
 	{
 		"organizationId": "_default",
 		"name": "brain_set",
-		"description": "Write one value of one thing in the company brain by its key, with no model: the property holds this value from now on, the value before stays as history unless the property is live state, which keeps its latest value only. A value of the wrong datatype is refused and nothing is written. The fact is marked as written by this flow, with the person in the conversation as its observer. In a conversation driven through /dev it answers as written and writes nothing, unless the caller sends X-Dev-Memory: on. People are not records.",
+		"description": "Write one value of one thing in the company brain by its key, with no model: the property holds this value from now on, the value before stays as history unless the property is live state, which keeps its latest value only. A value of the wrong datatype, or a key nobody knows when no type says what to make of it, is refused and nothing is written. The fact is marked as written by this flow, with the person in the conversation as its observer. In a conversation driven through /dev it answers as written and writes nothing, unless the caller sends X-Dev-Memory: on. People are not records.",
 		"category": "brain",
 		"tags": [
 			"brain",
@@ -253,12 +253,12 @@
 			},
 			"type": {
 				"type": "string",
-				"description": "What kind of thing it is, for a key nobody knows yet",
+				"description": "What kind of thing it is. Needed to make a key nobody knows yet: without it such a key is refused, so a mistyped key stays a mistake.",
 				"required": false
 			},
 			"name": {
 				"type": "string",
-				"description": "What to call it, for a key nobody knows yet; default: the key",
+				"description": "What to call a new thing; default: the key",
 				"required": false
 			}
 		},
