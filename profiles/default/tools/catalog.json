@@ -160,6 +160,103 @@
 	},
 	{
 		"organizationId": "_default",
+		"name": "brain_lookup",
+		"description": "Read one thing from the company brain by its key, with no model and no search: its entity and its current properties as {property: value}, who asserted each and when. By source + externalId (the key a system knows it by), or by type + name (the exact name; a name that fits several answers ambiguous with the candidates and picks none). `where` narrows a key or name to a property's value, and with no key lists the things holding that value. Nothing found is a success with found false. People are not records.",
+		"category": "brain",
+		"tags": [
+			"brain",
+			"record",
+			"lookup"
+		],
+		"type": "builtin",
+		"handler": "builtin:brain_lookup",
+		"permissions": [],
+		"parameters": {
+			"source": {
+				"type": "string",
+				"description": "The system the key belongs to",
+				"required": false
+			},
+			"externalId": {
+				"type": "string",
+				"description": "The thing's key in that system, exactly as it knows it",
+				"required": false
+			},
+			"type": {
+				"type": "string",
+				"description": "What kind of thing it is, with name or where",
+				"required": false
+			},
+			"name": {
+				"type": "string",
+				"description": "Its exact name, with type",
+				"required": false
+			},
+			"where": {
+				"type": "object",
+				"description": "One property's value it must hold: { property, value }",
+				"required": false
+			},
+			"limit": {
+				"type": "number",
+				"description": "How many things at most, when several hold the value",
+				"required": false,
+				"default": 20
+			}
+		},
+		"isBuiltIn": true,
+		"metadata": {}
+	},
+	{
+		"organizationId": "_default",
+		"name": "brain_set",
+		"description": "Write one value of one thing in the company brain by its key, with no model: the property holds this value from now on, the value before stays as history unless the property is live state, which keeps its latest value only. A value of the wrong datatype is refused and nothing is written. The fact is marked as written by this flow, with the person in the conversation as its observer. In a conversation driven through /dev it answers as written and writes nothing, unless the caller sends X-Dev-Memory: on. People are not records.",
+		"category": "brain",
+		"tags": [
+			"brain",
+			"record",
+			"write"
+		],
+		"type": "builtin",
+		"handler": "builtin:brain_set",
+		"permissions": [],
+		"parameters": {
+			"source": {
+				"type": "string",
+				"description": "The system the key belongs to",
+				"required": true
+			},
+			"externalId": {
+				"type": "string",
+				"description": "The thing's key in that system, exactly as it knows it",
+				"required": true
+			},
+			"property": {
+				"type": "string",
+				"description": "Which of its properties to set",
+				"required": true
+			},
+			"value": {
+				"type": "string",
+				"description": "The value: one text, number or true/false",
+				"required": true
+			},
+			"type": {
+				"type": "string",
+				"description": "What kind of thing it is, for a key nobody knows yet",
+				"required": false
+			},
+			"name": {
+				"type": "string",
+				"description": "What to call it, for a key nobody knows yet; default: the key",
+				"required": false
+			}
+		},
+		"isBuiltIn": true,
+		"metadata": {}
+	},
+	{
+		"organizationId": "_default",
 		"name": "find_colleague",
 		"description": "Find the colleagues best placed to help with a problem, from the company brain: who holds a role, has a skill, is responsible for a thing, or has been consulted about similar matters — presence-aware. Returns ranked candidates, each with a reason and an identifier (user:<id>) usable as an invoke-node call target or a handoff destination, plus `suggested` (the top candidate). Use when the flow lets the assistant decide WHO to bring in; prefer a fixed rule on the invoke node (role:…, responsible_for:…) when the organization's policy already says who.",
 		"category": "organization",
