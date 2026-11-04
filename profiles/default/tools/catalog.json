@@ -67,7 +67,7 @@
 	{
 		"organizationId": "_default",
 		"name": "knowledge_search",
-		"description": "Search the organization's knowledge bases: the hits (content, score, sourceType; term and synonyms for terminology; metadata) are the output, best first. The query is split at commas, semicolons, newlines and 'and' into items searched in parallel. No hits is a success with an empty output.",
+		"description": "Search the organization's knowledge bases: the hits (content, score, sourceType; term and synonyms for terminology; metadata, with a table's row as metadata.row) are the output, best first. The query is split at commas, semicolons, newlines and 'and' into items searched in parallel; exactKey instead finds one key exactly, with no model and no similar match. No hits is a success with an empty output.",
 		"category": "knowledge",
 		"tags": [
 			"knowledge",
@@ -82,8 +82,18 @@
 		"parameters": {
 			"query": {
 				"type": "string",
-				"description": "What to look up, in a few words",
-				"required": true
+				"description": "What to look up, in a few words. Required unless exactKey is given.",
+				"required": false
+			},
+			"exactKey": {
+				"type": "string",
+				"description": "One key to find exactly, in place of a search: a table row's term or synonym, with no model and no similar match",
+				"required": false
+			},
+			"keyColumn": {
+				"type": "string",
+				"description": "With exactKey: the header of the table column the key is in",
+				"required": false
 			},
 			"knowledgeBaseIds": {
 				"type": "array",
