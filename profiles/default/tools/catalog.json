@@ -4,6 +4,7 @@
 		"name": "http_request",
 		"description": "Make HTTP requests to external APIs - one attempt; the status and body come back as the result, a network failure as an error",
 		"category": "network",
+		"icon": "globe",
 		"tags": [
 			"http",
 			"api",
@@ -69,6 +70,7 @@
 		"name": "knowledge_search",
 		"description": "Search the organization's knowledge bases: the hits (content, score, sourceType; term and synonyms for terminology; metadata, with a table's row as metadata.row) are the output, best first. The query is split at commas, semicolons, newlines and 'and' into items searched in parallel; exactKey instead finds one key exactly, with no model and no similar match. No hits is a success with an empty output.",
 		"category": "knowledge",
+		"icon": "book-open",
 		"tags": [
 			"knowledge",
 			"search",
@@ -124,6 +126,7 @@
 		"name": "org_directory",
 		"description": "List the organization's members as callable targets. Each entry has an identifier (user:<id>) directly usable as an invoke-node call target or transfer destination, plus name, username, email and organization roles. Use to decide WHO to call/consult dynamically.",
 		"category": "organization",
+		"icon": "users",
 		"tags": [
 			"directory",
 			"users",
@@ -149,6 +152,7 @@
 		"name": "web_search",
 		"description": "Search the web and answer briefly with sources: current events, facts, weather, opening hours, places. Use instead of guessing whenever the question is about the outside world. A place the answer depends on must be in the query.",
 		"category": "internet",
+		"icon": "search",
 		"tags": [
 			"internet",
 			"search",
@@ -173,6 +177,7 @@
 		"name": "brain_lookup",
 		"description": "Read one thing from the company brain by its key, with no model and no search: its entity and its current properties as {property: value}, who asserted each and when. By source + externalId (the key a system knows it by), or by type + name (the exact name; a name that fits several answers ambiguous with the candidates and picks none). `where` narrows a key or name to a property's value, and with no key lists the things holding that value. Nothing found is a success with found false. People are not records.",
 		"category": "brain",
+		"icon": "brain",
 		"tags": [
 			"brain",
 			"record",
@@ -222,6 +227,7 @@
 		"name": "brain_set",
 		"description": "Write one value of one thing in the company brain by its key, with no model: the property holds this value from now on, the value before stays as history unless the property is live state, which keeps its latest value only. A value of the wrong datatype, or a key nobody knows when no type says what to make of it, is refused and nothing is written. The fact is marked as written by this flow, with the person in the conversation as its observer. In a conversation driven through /dev it answers as written and writes nothing, unless the caller sends X-Dev-Memory: on. People are not records.",
 		"category": "brain",
+		"icon": "brain",
 		"tags": [
 			"brain",
 			"record",
@@ -270,6 +276,7 @@
 		"name": "find_colleague",
 		"description": "Find the colleagues best placed to help with a problem, from the company brain: who holds a role, has a skill, is responsible for a thing, or has been consulted about similar matters — presence-aware. Returns ranked candidates, each with a reason and an identifier (user:<id>) usable as an invoke-node call target or a handoff destination, plus `suggested` (the top candidate). Use when the flow lets the assistant decide WHO to bring in; prefer a fixed rule on the invoke node (role:…, responsible_for:…) when the organization's policy already says who.",
 		"category": "organization",
+		"icon": "users",
 		"tags": [
 			"directory",
 			"routing",
@@ -340,6 +347,7 @@
 		},
 		"isBuiltIn": true,
 		"category": "communication",
+		"icon": "message-square",
 		"tags": [
 			"channel",
 			"outbound",
