@@ -9,15 +9,6 @@
 	},
 	{
 		"organizationId": "_default",
-		"providerKey": "local-tts-piper-de",
-		"priority": 40,
-		"config": {
-			"model_path": "/models/de_DE-thorsten-medium.onnx",
-			"config_path": "/models/de_DE-thorsten-medium.onnx.json"
-		}
-	},
-	{
-		"organizationId": "_default",
 		"providerKey": "elevenlabs",
 		"priority": 50,
 		"config": {
@@ -94,12 +85,6 @@
 	},
 	{
 		"organizationId": "_default",
-		"providerKey": "local-stt-whisper-large-v3",
-		"priority": 40,
-		"config": {}
-	},
-	{
-		"organizationId": "_default",
 		"providerKey": "gladia",
 		"priority": 50,
 		"config": {
@@ -164,18 +149,6 @@
 			"topP": 1.0,
 			"frequencyPenalty": 0.0,
 			"presencePenalty": 0.0,
-			"streamEnabled": true
-		}
-	},
-	{
-		"organizationId": "_default",
-		"providerKey": "ollama",
-		"priority": 30,
-		"config": {
-			"model": "qwen2.5:7b",
-			"temperature": 0.7,
-			"maxTokens": 1000,
-			"topP": 1.0,
 			"streamEnabled": true
 		}
 	},
