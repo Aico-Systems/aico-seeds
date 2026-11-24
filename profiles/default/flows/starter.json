@@ -37,7 +37,7 @@
 				},
 				"data": {
 					"label": "End",
-					"reason": "success"
+					"outcome": "success"
 				}
 			}
 		],
