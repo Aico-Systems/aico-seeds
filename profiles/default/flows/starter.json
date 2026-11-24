@@ -1,0 +1,83 @@
+{
+	"organizationId": "TEST",
+	"slug": "starter",
+	"name": "Starter",
+	"description": "The flow a checkout without the private demo seeds starts with: one conversation node that talks with whoever opens it, no tools, nobody reached. It lands only in an organization named TEST. Its model is OpenAI's: set an OpenAI key on the organization (Settings → Providers), or pick another provider in the builder.",
+	"definition": {
+		"nodes": [
+			{
+				"id": "start",
+				"type": "start",
+				"position": {
+					"x": 0,
+					"y": 300
+				},
+				"data": {
+					"label": "Start"
+				}
+			},
+			{
+				"id": "conversation",
+				"type": "decide",
+				"position": {
+					"x": 250,
+					"y": 300
+				},
+				"data": {
+					"label": "Conversation",
+					"instructions": "Talk with the person about whatever they bring up. This flow has no tools: you cannot look anything up, reach anybody or act on their behalf, so say so plainly when that is what they ask for."
+				}
+			},
+			{
+				"id": "end",
+				"type": "end",
+				"position": {
+					"x": 500,
+					"y": 300
+				},
+				"data": {
+					"label": "End",
+					"reason": "success"
+				}
+			}
+		],
+		"edges": [
+			{
+				"id": "e-start-conversation",
+				"source": "start",
+				"target": "conversation",
+				"sourceHandle": "default"
+			},
+			{
+				"id": "e-conversation-respond",
+				"source": "conversation",
+				"target": "conversation",
+				"sourceHandle": "respond"
+			},
+			{
+				"id": "e-conversation-complete",
+				"source": "conversation",
+				"target": "end",
+				"sourceHandle": "complete",
+				"data": {
+					"description": "The person has said they are finished."
+				}
+			}
+		],
+		"errorPolicy": {
+			"type": "message_and_end",
+			"errorMessage": "Sorry, a technical error occurred."
+		}
+	},
+	"configuration": {},
+	"metadata": {},
+	"systemInstructions": "You are the assistant of a fresh AICO development installation.",
+	"providerConfigs": {
+		"llm": {
+			"key": "openai",
+			"config": {
+				"model": "gpt-5.6-luna"
+			}
+		}
+	}
+}

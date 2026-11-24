@@ -1,0 +1,16 @@
+[
+	{
+		"username": "dev",
+		"email": "dev@aico.local",
+		"name": "Dev Admin",
+		"password": "$AICO_DEV_ADMIN_PASSWORD",
+		"superAdmin": true,
+		"organizations": [
+			{
+				"name": "TEST",
+				"roles": ["Owner"]
+			}
+		],
+		"comment": "The one user of a checkout without seeds-demo: a super admin, Owner of TEST. Fictional; its password is generated per machine into .env.dev.local by infrastructure/synth/dev.ts."
+	}
+]
